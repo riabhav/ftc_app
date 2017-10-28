@@ -12,7 +12,7 @@ public class TestDrive extends OpMode {
 
 
     DcMotor motorLeft;
-    //DcMotor motorRight;
+    DcMotor motorRight;
     //Servo arm;
 
 
@@ -22,12 +22,12 @@ public class TestDrive extends OpMode {
 
     @Override
     public void init() {
-        //motorRight = hardwareMap.dcMotor.get("rightMotor");
+        motorRight = hardwareMap.dcMotor.get("rightMotor");
         motorLeft = hardwareMap.dcMotor.get("leftMotor");
         //arm = hardwareMap.servo.get("centerArm");
 
         motorLeft.setDirection(DcMotor.Direction.REVERSE);
-        //motorRight.setDirection(DcMotor.Direction.FORWARD);
+        motorRight.setDirection(DcMotor.Direction.FORWARD);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class TestDrive extends OpMode {
 
 
         motorLeft.setPower(leftY);
-        //motorRight.setPower(leftY);
+        motorRight.setPower(leftY);
         //motorRight.setPower(rightY);
         //arm.setPosition(rightY);
 
