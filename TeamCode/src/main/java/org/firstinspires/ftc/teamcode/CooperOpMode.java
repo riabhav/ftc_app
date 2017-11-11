@@ -3,13 +3,12 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 /**
  * Created by Raja on 11/6/2017.
  */
 @TeleOp(name = "CooperOpmode")
-public class CooperOpMode extends OpMode{
+public class CooperOpMode extends OpMode {
 
     final static double MOTOR_POWER=0.15 ;
 
@@ -34,7 +33,7 @@ public class CooperOpMode extends OpMode{
     @Override
     public void loop() {
 
-        float leftY = gamepad1.left_stick_y;
+        /*float leftY = gamepad1.left_stick_y;
         float rightY = gamepad1.right_stick_y;
         float leftX = gamepad1.left_stick_x;
         float lefty = gamepad2.left_stick_y;
@@ -43,10 +42,15 @@ public class CooperOpMode extends OpMode{
 
         motorLeft.setPower(leftY);
         motorRight.setPower(leftY);
-        motorJack.setPower(lefty);
-        //motorRight.setPower(rightY);
-        //arm.setPosition(rightY);
+        motorJack.setPower(lefty);*/
 
+        DeviceUtils.startDriving(motorLeft, motorRight, gamepad1);
+        DeviceUtils.startArmMotor(motorJack, gamepad1);
+
+        telemetry.addData("Mode", "gamepad1.left_stick_x = " + gamepad1.left_stick_x);
+        telemetry.addData("Mode", "gamepad1.left_stick_y = " + gamepad1.left_stick_y);
+        telemetry.addData("Mode", "gamepad1.right_stick_x = " + gamepad1.right_stick_x);
+        telemetry.addData("Mode", "gamepad1.right_stick_x = " + gamepad1.right_stick_y);
     }
 
 
