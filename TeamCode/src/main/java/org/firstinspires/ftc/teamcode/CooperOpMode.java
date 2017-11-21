@@ -33,7 +33,7 @@ public class CooperOpMode extends OpMode {
     @Override
     public void loop() {
 
-        /*float leftY = gamepad1.left_stick_y;
+        float leftY = gamepad1.left_stick_y;
         float rightY = gamepad1.right_stick_y;
         float leftX = gamepad1.left_stick_x;
         float lefty = gamepad2.left_stick_y;
@@ -42,10 +42,10 @@ public class CooperOpMode extends OpMode {
 
         motorLeft.setPower(leftY);
         motorRight.setPower(leftY);
-        motorJack.setPower(lefty);*/
+        motorJack.setPower(lefty);
 
-        DeviceUtils.startDriving(motorLeft, motorRight, gamepad1);
-        DeviceUtils.startArmMotor(motorJack, gamepad1);
+        //DeviceUtils.startDriving(motorLeft, motorRight, gamepad1);
+        //DeviceUtils.startArmMotor(motorJack, gamepad1);
 
         telemetry.addData("Mode", "gamepad1.left_stick_x = " + gamepad1.left_stick_x);
         telemetry.addData("Mode", "gamepad1.left_stick_y = " + gamepad1.left_stick_y);

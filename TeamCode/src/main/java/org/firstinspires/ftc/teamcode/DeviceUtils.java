@@ -1,20 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 public class DeviceUtils {
 
-    public static float checkMaxSpeed(float power) {
-        if (power > KeysI.MAX_DRIVE_SPEED) {
-            power = KeysI.MAX_DRIVE_SPEED;
-        }
-
-        return power;
-    }
-
     public static void goForward(DcMotor motorLeft, DcMotor motorRight, float power) {
-        power = checkMaxSpeed(power);
+        //power = checkMaxSpeed(power);
 
         motorLeft.setDirection(DcMotor.Direction.FORWARD);
         motorRight.setDirection(DcMotor.Direction.FORWARD);
@@ -24,7 +17,7 @@ public class DeviceUtils {
     }
 
     public static void goBackward(DcMotor motorLeft, DcMotor motorRight, float power) {
-        power = checkMaxSpeed(power);
+        //power = checkMaxSpeed(power);
 
         motorLeft.setDirection(DcMotor.Direction.REVERSE);
         motorRight.setDirection(DcMotor.Direction.REVERSE);
@@ -34,17 +27,18 @@ public class DeviceUtils {
     }
 
     public static void turnLeft(DcMotor motorLeft, DcMotor motorRight, float power) {
-        power = checkMaxSpeed(power);
+        //power = checkMaxSpeed(power);
 
-        motorLeft.setDirection(DcMotor.Direction.REVERSE);
-        motorRight.setDirection(DcMotor.Direction.FORWARD);
+        motorLeft.setDirection(DcMotor.Direction.FORWARD);
+
+        motorRight.setDirection(DcMotor.Direction.REVERSE);
 
         motorLeft.setPower(power);
         motorRight.setPower(power);
     }
 
     public static void turnRight(DcMotor motorLeft, DcMotor motorRight, float power) {
-        power = checkMaxSpeed(power);
+        //power = checkMaxSpeed(power);
 
         motorLeft.setDirection(DcMotor.Direction.FORWARD);
         motorRight.setDirection(DcMotor.Direction.REVERSE);
@@ -55,12 +49,9 @@ public class DeviceUtils {
 
     public static void startDriving(DcMotor motorLeft, DcMotor motorRight, Gamepad gamepad1) {
         double throttle = gamepad1.left_stick_y;
-        double turn = gamepad1.left_stick_x;
-        double leftSpeed = throttle - turn;
-        double rightSpeed = throttle + throttle;
 
-        motorLeft.setPower(leftSpeed);
-        motorRight.setPower(rightSpeed);
+        motorLeft.setPower(gamepad1.left_stick_y);
+        motorRight.setPower(gamepad1.right_stick_x);
     }
 
     public static void startArmMotor(DcMotor armMotor, Gamepad gamepad1) {
