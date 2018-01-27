@@ -1,4 +1,4 @@
-/* Copyright (c) 2017 FIRST. All rights reserved.
+* Copyright (c) 2017 FIRST. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted (subject to the limitations in the disclaimer below) provided that
@@ -29,11 +29,13 @@
 
 package org.firstinspires.ftc.teamcode;
 
+        import com.qualcomm.robotcore.hardware.ColorSensor;
         import com.qualcomm.robotcore.hardware.DcMotor;
         import com.qualcomm.robotcore.hardware.HardwareMap;
         import com.qualcomm.robotcore.util.ElapsedTime;
         import com.qualcomm.robotcore.hardware.DcMotorSimple;
-
+//        import com.qualcomm.hardware.ams.AMSColorSensor;
+        //import com.qualcomm.hardware.lynx.LynxI2cColorRangeSensor;
 
 /**
  * This is NOT an opmode.
@@ -64,6 +66,8 @@ public class HardwareMapRev
     public DcMotor FrontRight  = null;
     public DcMotor BackLeft    = null;
     public DcMotor BackRight    = null;
+    public ColorSensor  RevColorSensor = null;
+
 
     public static final double MID_SERVO       =  0.5 ;
     public static final double ARM_UP_POWER    =  0.45 ;
@@ -121,6 +125,8 @@ public class HardwareMapRev
         FrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         BackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         BackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        RevColorSensor = hwMap.get(ColorSensor.class,"Color_Blue");
         //  leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
