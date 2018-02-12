@@ -45,9 +45,9 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 // import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
 
-@Autonomous(name="BlueRightAutonomous", group="Tests")
+@Autonomous(name="Autonomous Red", group="Tests")
 //@Disabled
-public class BlueRightAutonomous extends LinearOpMode {
+public class RedRevAutonomous extends LinearOpMode {
 
     /* Declare OpMode members. */
     // HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
@@ -126,24 +126,33 @@ public class BlueRightAutonomous extends LinearOpMode {
         telemetry.addData("Status","Driving Forward");
         telemetry.update();
         glyphgrab();
-        //      glyphlift();
+  //      glyphlift();
 
-        /* Move forwarrd */
-        drive(1,1,1,1);
+        robot.FrontRight.setPower(1);
+        robot.FrontLeft.setPower(1);
+        robot.BackRight.setPower(1);
+        robot.BackLeft.setPower(1);
         sleep(1000);
 
-        /*Turn Left*/
-        drive(0.5,-0.5,0.5,-0.5);
+        robot.FrontRight.setPower(0.5);
+        robot.FrontLeft.setPower(-0.5);
+        robot.BackRight.setPower(0.5);
+        robot.BackLeft.setPower(-0.5);
         sleep(500);
 
-        /*Move Forward */
-        drive(1,1,1,1);
+        robot.FrontRight.setPower(1);
+        robot.FrontLeft.setPower(1);
+        robot.BackRight.setPower(1);
+        robot.BackLeft.setPower(1);
         sleep(400);
 
-        drive(0,0,0,0);
         glyphRelease();
-        //   servoArmDown(1.0);
-        //  red_jewel(0.5);
+        robot.FrontRight.setPower(0);
+        robot.FrontLeft.setPower(0);
+        robot.BackRight.setPower(0);
+        robot.BackLeft.setPower(0);
+     //   servoArmDown(1.0);
+      //  red_jewel(0.5);
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         //encoderDrive(DRIVE_SPEED,  15,  15, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
@@ -163,9 +172,6 @@ public class BlueRightAutonomous extends LinearOpMode {
         while (opModeIsActive()){
             robot.servoClawLeftBottom.setPosition(1);
             robot.servoClawRightBottom.setPosition(1);
-            robot.servoClawLeftTop.setPosition(1);
-            robot.servoClawRightTop.setPosition(1);
-
         }
     }
 
@@ -174,19 +180,7 @@ public class BlueRightAutonomous extends LinearOpMode {
         while (opModeIsActive()) {
             robot.servoClawLeftBottom.setPosition(0);
             robot.servoClawRightBottom.setPosition(0);
-            robot.servoClawLeftTop.setPosition(0);
-            robot.servoClawRightTop.setPosition(0);
         }
-    }
-
-    /* To Drive forward , turn left or right the robot */
-    public void drive(double FrontRightMotor, double FrontLeftMotor, double BackRightMotor, double BackLeftMotor)
-    {
-        robot.FrontRight.setPower(FrontRightMotor);
-        robot.FrontLeft.setPower(FrontLeftMotor);
-        robot.BackRight.setPower(BackRightMotor);
-        robot.BackLeft.setPower(BackLeftMotor);
-
     }
     /*
      *  Method to perfmorm a relative move, based on encoder counts.
@@ -306,4 +300,3 @@ public class BlueRightAutonomous extends LinearOpMode {
 
     }
 }
-

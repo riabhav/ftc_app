@@ -45,8 +45,9 @@ public class MecanumWithLift extends OpMode {
         servoClawRightBottom = hardwareMap.get(Servo.class, "rightclawServoBottom");
         servoClawRightTop = hardwareMap.get(Servo.class, "rightclawServoTop");
         motorSpin = hardwareMap.get(DcMotor.class, "spinMotor");
-        //motorSpin.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //motorSpin.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorSpin.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorSpin.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
 
         //then we reverse two motors so they all spin forward when given a positive value
         mBackLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -73,11 +74,6 @@ public class MecanumWithLift extends OpMode {
 
         spin();
 
-        if (gamepad2.left_stick_y > 0) {
-            motorSpin.setPower(1);
-        }
-
-
         if (gamepad2.y) {
             motorArm.setPower(UY);
         } else if (gamepad2.a) {
@@ -92,14 +88,16 @@ public class MecanumWithLift extends OpMode {
         if (gamepad2.dpad_right && !lastdpadrightspin) {
 
             if (armspin) {
+                motorSpin.setPower(0.3);
                 motorSpin.setTargetPosition(560);
-                motorSpin.setPower(0);
                 armspin = false;
+                motorSpin.setPower(0);
             }
             else {
+                motorSpin.setPower(0.3);
                 motorSpin.setTargetPosition(0);
-                motorSpin.setPower(0);
                 armspin = true;
+                motorSpin.setPower(0);
             }
         }
         lastdpadrightspin = gamepad2.dpad_right;
